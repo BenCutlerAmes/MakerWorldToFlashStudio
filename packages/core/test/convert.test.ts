@@ -45,6 +45,21 @@ describe("convert", () => {
     expect(settings.filament_is_support).toHaveLength(4);
   });
 
+  it("never leaves blank entries in per-filament arrays when presets differ", () => {
+    for (const filaments of [[{ type: "ABS", colour: "#FF8000" }], [{ type: "ABS", colour: "#FF8000" }, { type: "PLA", colour: "#FFFFFF" }]]) {
+      const { settings } = run(bambuFixture({ filaments, extruders: [1] }));
+      const ragged = Object.entries(settings).filter(
+        ([, v]) => Array.isArray(v) && v.length === 4 && v.some((x) => x === "") && v.some((x) => x !== ""),
+      );
+      expect(ragged.map(([k]) => k)).toEqual([]);
+    }
+  });
+
+  it("gives empty toolheads the same material as the first used slot", () => {
+    const { settings } = run(bambuFixture({ filaments: [{ type: "ABS", colour: "#FF8000" }] }));
+    expect(settings.filament_settings_id).toEqual(Array(4).fill("Generic ABS @FF C5P"));
+  });
+
   it("keeps the designer's process settings", () => {
     const { settings } = run(bambuFixture());
     expect(settings.wall_loops).toBe("5");

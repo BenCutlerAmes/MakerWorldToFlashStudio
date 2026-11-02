@@ -16,6 +16,13 @@ const patches: Record<string, () => void> = {
     s.version = VERSION;
     a.setText("Metadata/project_settings.config", JSON.stringify(s, null, 4));
   },
+  // out-of-range values Bambu Studio writes
+  params: () => {
+    const s = JSON.parse(a.text("Metadata/project_settings.config")!);
+    s.raft_first_layer_expansion = "2";
+    s.tree_support_wall_count = "0";
+    a.setText("Metadata/project_settings.config", JSON.stringify(s, null, 4));
+  },
   // client version header in slice_info.config
   sliceinfo: () => {
     const t = a.text("Metadata/slice_info.config");

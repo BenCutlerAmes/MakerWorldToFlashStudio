@@ -106,7 +106,9 @@ export function retargetPrinter(p: Project): void {
   const slotMap = planSlots(p, colours.length);
   const sourceOf: number[] = []; // new slot index (0-based) -> original slot (1-based) or 0 for padding
   for (let n = 1; n <= TOOLHEADS; n++) sourceOf.push([...slotMap].find(([, to]) => to === n)?.[0] ?? 0);
-  const chosen = sourceOf.map((src) => filamentFor(src ? types[src - 1] ?? "PLA" : "PLA", nozzle));
+  // Empty toolheads get the same material as the first used slot, so presets with different key sets aren't mixed needlessly.
+  const padType = types[(sourceOf.find((src) => src > 0) ?? 1) - 1] ?? "PLA";
+  const chosen = sourceOf.map((src) => filamentFor(src ? types[src - 1] ?? padType : padType, nozzle));
   remapExtruders(p, slotMap);
 
   // Process: closest Creator 5 Pro layer height, then keep the designer's intent settings.
@@ -119,8 +121,13 @@ export function retargetPrinter(p: Project): void {
   for (const [k, v] of Object.entries(machine)) if (!META_KEYS.has(k)) out[k] = v;
 
   // Filament keys become per-slot arrays built from the chosen presets.
-  const filamentKeys = new Set(chosen.flatMap((f) => Object.keys(f)).filter((k) => !META_KEYS.has(k) && Array.isArray(chosen[0][k])));
-  for (const k of filamentKeys) out[k] = chosen.map((f) => arr(f[k])[0] ?? "");
+  // A key one preset defines and another doesn't (ABS has chamber settings, PLA doesn't) must not leave blanks:
+  // Flash Studio rejects the whole config ("Invalid value … 1,,,") and falls back to a default printer.
+  const filamentKeys = new Set(chosen.flatMap((f) => Object.keys(f)).filter((k) => !META_KEYS.has(k) && chosen.some((f) => Array.isArray(f[k]))));
+  for (const k of filamentKeys) {
+    const fallback = chosen.map((f) => arr(f[k])[0]).find((v) => v !== undefined) ?? "";
+    out[k] = chosen.map((f, i) => arr(f[k])[0] ?? arr(s[k])[(sourceOf[i] || 1) - 1] ?? fallback);
+  }
 
   // Per-filament options the presets don't define (e.g. filament_is_support) must still have one value per slot.
   const origCount = colours.length;
