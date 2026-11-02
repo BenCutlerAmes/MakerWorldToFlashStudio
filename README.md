@@ -4,7 +4,7 @@ Converts Bambu Studio / MakerWorld `.3mf` projects so they open and slice in **F
 
 Two ways to use it, same converter underneath:
 
-- **Web page** — drag and drop files, save the converted copy. Runs entirely in the browser; nothing is uploaded.
+- **Web page** — drag and drop files, save the converted copy. Runs entirely in the browser; nothing is uploaded. Hosted at <https://bencutlerames.github.io/MakerWorldToFlashStudio/>.
 - **Command line** — `bambu2ff convert <file|folder>`. Works on macOS, Windows and Linux (Node 18+).
 
 Converted files are saved next to the original as `<name>_FF.3mf`. Originals are never modified. Files that aren't Bambu projects are left alone.
