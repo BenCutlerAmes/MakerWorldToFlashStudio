@@ -36,7 +36,37 @@
         </ul>
         <p>Prefer the command line? <code>npx bambu2ff convert file.3mf</code></p>
       </details>
+
+      <details class="about">
+        <summary>Contributing</summary>
+        <p>
+          Bug reports, fixes and support for more printers are welcome. The project is open source on
+          <a href="https://github.com/BenCutlerAmes/MakerWorldToFlashStudio">GitHub</a>.
+        </p>
+        <ul>
+          <li>
+            <strong>Report a problem:</strong>
+            <a href="https://github.com/BenCutlerAmes/MakerWorldToFlashStudio/issues/new">open an issue</a> with the
+            MakerWorld link (or the <code>.3mf</code>), the conversion report, and what Flash Studio showed.
+          </li>
+          <li>
+            <strong>Change the code:</strong> fork the repo, then run <code>npm install</code> and
+            <code>npm run dev</code> to work on this page locally.
+          </li>
+          <li>
+            Before opening a pull request, run <code>npm run typecheck</code> and <code>npm test</code>, and add a test
+            in <code>packages/core/test</code> for any converter change. CI runs the same checks on macOS, Windows and
+            Linux.
+          </li>
+          <li>Keep pull requests focused on one change, and describe which files or printers it was tested with.</li>
+        </ul>
+      </details>
     </main>
+    <footer>
+      <a href="https://github.com/BenCutlerAmes/MakerWorldToFlashStudio">Source on GitHub</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://github.com/BenCutlerAmes/MakerWorldToFlashStudio/issues">Report an issue</a>
+    </footer>
     <script type="module" src="./src/main.ts"></script>
   </body>
 </html>
