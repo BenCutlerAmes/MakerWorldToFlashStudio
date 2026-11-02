@@ -22,7 +22,7 @@ describe("convert", () => {
 
   it("caps the Bambu Studio version Flash Studio checks", () => {
     const { model } = run(bambuFixture({ version: "02.07.01.62" }));
-    expect(model).toContain("BambuStudio-02.04.02.00");
+    expect(model).toContain("BambuStudio-02.04.00.02");
     const { model: old } = run(bambuFixture({ version: "01.10.01.50" }));
     expect(old).toContain("BambuStudio-01.10.01.50");
   });

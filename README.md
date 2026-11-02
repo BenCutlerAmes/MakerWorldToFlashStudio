@@ -15,7 +15,7 @@ Found by slicing real MakerWorld downloads with Flash Studio's own command-line 
 
 | Problem in Flash Studio | Fix |
 |---|---|
-| "File Version 2.x not supported" for files from Bambu Studio 2.5+ | Lower the version stamp to 2.4.2 |
+| "Newer 3MF version" warning / "File Version 2.x not supported" for files from newer Bambu Studio | Lower the version stamp to 2.4.0.2 |
 | "Param values in 3mf/config error" (`raft_first_layer_expansion`, `tree_support_wall_count` = -1) | Replace with Flash Studio defaults |
 | Project still targets a Bambu printer (A1 mini, A1, P1S, P2S, H2D) with Bambu G-code | Swap in Creator 5 Pro printer, process and filament presets; keep the designer's walls, infill, supports, brim, seam, ironing, etc. |
 | Objects off-centre or on the wrong plate because the bed is a different size | Re-centre each object on its own plate for the 256 × 256 mm bed |

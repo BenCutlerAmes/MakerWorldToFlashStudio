@@ -1,7 +1,10 @@
 import { type Project, ROOT_MODEL } from "../project.js";
 
-/** Newest Bambu Studio file version Flash Studio (Orca-Flashforge 2.4.2) accepts. */
-export const MAX_VERSION = "02.04.02.00";
+/**
+ * Newest Bambu Studio file version Flash Studio accepts. Its command-line slicer checks against 2.4.2, but the
+ * app compares with 2.4.0.2 and warns "Newer 3MF version" for anything above that.
+ */
+export const MAX_VERSION = "02.04.00.02";
 
 const num = (v: string) => v.split(".").map(Number);
 const newer = (a: string, b: string) => {
