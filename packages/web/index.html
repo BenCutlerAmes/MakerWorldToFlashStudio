@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MakerWorld to Flash Studio</title>
+    <meta name="description" content="Convert Bambu Studio / MakerWorld 3MF projects for the FlashForge Creator 5 Pro in Flash Studio. Runs in your browser; files never leave your computer." />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>MakerWorld → Flash Studio</h1>
+        <p class="lede">
+          Converts Bambu Studio and MakerWorld <code>.3mf</code> projects so they open and slice in Flash Studio for the
+          <strong>FlashForge Creator 5 Pro</strong>. Conversion runs in your browser; files are never uploaded.
+        </p>
+      </header>
+
+      <label id="drop" class="drop" tabindex="0">
+        <input id="picker" type="file" accept=".3mf" multiple hidden />
+        <span class="drop-title">Drop .3mf files here</span>
+        <span class="drop-sub">or click to choose files</span>
+      </label>
+
+      <section id="results" aria-live="polite"></section>
+
+      <details class="about">
+        <summary>What it changes</summary>
+        <ul>
+          <li>Lowers the Bambu Studio version stamp so Flash Studio doesn't reject files from newer Bambu Studio releases.</li>
+          <li>Swaps the Bambu printer, process and filament presets for Creator 5 Pro ones, keeping the designer's walls, infill, supports, brim and other print choices.</li>
+          <li>Re-centres every plate for the 256 × 256 mm bed and moves the prime tower clear of the parts.</li>
+          <li>Fixes settings Flash Studio considers out of range, and removes pre-sliced Bambu G-code.</li>
+          <li>Maps filament slots onto the four toolheads.</li>
+        </ul>
+        <p>Prefer the command line? <code>npx bambu2ff convert file.3mf</code></p>
+      </details>
+    </main>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>

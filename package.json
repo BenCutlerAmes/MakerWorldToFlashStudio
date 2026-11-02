@@ -1,0 +1,25 @@
+{
+  "name": "bambu2ff-workspace",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "test": "vitest run",
+    "dev": "vite packages/web",
+    "convert": "tsx packages/cli/src/index.ts convert",
+    "inspect": "tsx packages/cli/src/index.ts inspect",
+    "profiles": "tsx scripts/build-profiles.ts",
+    "fs-check": "tsx scripts/fs-check.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "esbuild": "^0.24.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.8"
+  }
+}

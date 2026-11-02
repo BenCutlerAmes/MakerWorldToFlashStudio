@@ -1,0 +1,17 @@
+{
+  "name": "@bambu2ff/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@bambu2ff/core": "0.1.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.11"
+  }
+}

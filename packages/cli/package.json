@@ -1,0 +1,15 @@
+{
+  "name": "bambu2ff",
+  "version": "0.1.0",
+  "description": "Convert Bambu Studio / MakerWorld 3MF projects for the FlashForge Creator 5 Pro in Flash Studio",
+  "type": "module",
+  "bin": { "bambu2ff": "dist/bambu2ff.mjs" },
+  "files": ["dist"],
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --platform=node --format=esm --target=node18 --outfile=dist/bambu2ff.mjs --banner:js=\"#!/usr/bin/env node\""
+  },
+  "dependencies": {
+    "@bambu2ff/core": "0.1.0"
+  }
+}

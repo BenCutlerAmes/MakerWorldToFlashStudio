@@ -1,0 +1,10 @@
+{
+  "name": "@bambu2ff/core",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "dependencies": {
+    "fflate": "^0.8.2",
+    "fast-xml-parser": "^4.5.0"
+  }
+}
