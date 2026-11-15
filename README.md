@@ -1,3 +1,5 @@
+THIS IS VERY MUCH A WORK IN PROGRESS. I WANTED IT FOR MYSELF AND THOUGHT OTHERS MIGHT BENEFIT. IF IT DOESN'T WORK HOW YOU LIKE, RAISE A PULL REQUEST.
+
 # bambu2ff — MakerWorld → Flash Studio
 
 Converts Bambu Studio / MakerWorld `.3mf` projects so they open and slice in **Flash Studio** for the **FlashForge Creator 5 Pro**.
